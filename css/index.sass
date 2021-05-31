@@ -1,0 +1,1020 @@
+html
+    --c-accent: #FFB75E
+    --c-text-main: #0f0f0f
+    --c-text-second: #444
+    --c-text-label: #a3a3a3
+    --c-oncontent-secondary: rgba(255,255,255,.25)
+    --grad-accent: linear-gradient(180deg, #FFB75E 0%, #ED8F03 100%)
+    --grad-accent--hover: linear-gradient(180deg, #FFB05E 0%, #FD8F03 100%)
+    --grad-crafts: linear-gradient(40.85deg, rgba(0, 0, 0, 0.6) 20.14%, rgba(0, 0, 0, 0) 61.79%)
+    --bg-form: rgba(0,0,0,.65)
+    --bg-secondary: #F8F8F8
+    --shadow-button: 0px 3px 0px #C67702;
+    --shadow-button-text: 0px 1px 1px rgba(0, 0, 0, 0.35)
+    --shadow-main: 0px 15px 35px rgba(0, 0, 0, 0.05);
+
+
+
+@mixin text16
+    font-family: 'Gilroy', sans-serif
+    font-size: 16px
+    line-height: 150%
+@mixin text18
+    font-family: 'Gilroy', sans-serif
+    font-size: 18px
+    line-height: 1.5
+@mixin h2
+    font-family: 'PT Serif', serif
+    font-size: 45px
+    line-height: 1.3
+    text-align: center
+    color: var(--c-text-main)
+    text-transform: uppercase
+@mixin h2bold
+    font-family: 'PT Serif', serif
+    font-size: 45px
+    font-weight: bold
+    line-height: 1.3
+@mixin h3
+    font-family: 'Gilroy', sans-serif
+    font-weight: bold
+    font-size: 26px
+    line-height: 1.35
+@mixin h4
+    font-family: 'Gilroy', sans-serif
+    font-weight: bold
+    font-size: 22px
+    line-height: 1.5
+@mixin buttonPrimary
+    background-image: var(--grad-accent)
+    color: #fff
+    text-shadow: var(--shadow-button-text)
+    font-size: 18px
+    font-weight: bold
+    padding-top: 14px
+    padding-bottom: 14px
+    padding-right: 40px
+    padding-left: 40px
+    box-shadow: var(--shadow-button)
+    border-radius: 48px
+    transition: all 0.2s
+    &:hover
+        transform: translateY(-1px) scale(1.02)
+        background-image: var(--grad-accent--hover)
+        transition: all 0.2s
+
+
+*
+    box-sizing: border-box
+    outline: none
+a
+    text-decoration: none
+    color: inherit
+
+.hidden
+    visibility: hidden
+
+a, button
+    cursor: pointer
+
+input, button
+    border: none
+    padding: 0
+    background: none
+    display: inline-block
+
+p, ul, h1, h2, h3, h4, h5, h6, ol
+    padding: 0
+    margin: 0
+    font-weight: normal
+
+ul, ol
+    list-style: none
+
+body
+    // font-family: 'Gilroy', sans-serif
+    @include text16
+    color: var(--c-text-second)
+
+
+
+
+
+// HEADER
+.header
+    padding-bottom: 175px
+    background-image: url(../img/header/header-bg.jpg)
+    background-size: cover
+    background-position: bottom center
+    background-repeat: no-repeat
+    color: #fff
+    &-menu
+        padding-top: 25px
+        padding-bottom: 25px
+        border-bottom: 1px solid rgba(255,255,255,.15)
+        margin-bottom: 100px
+        &-logo
+            width: 100%
+            height: 100%
+            display: flex
+            align-items: center
+            &__img
+                width: 100%
+        &-contacts
+            display: flex
+            justify-content: center
+            align-items: center
+            height: 100%
+            &-contact
+                font-size: 18px
+                line-height: 1.2
+                color: #fff
+                display: inline-flex
+                align-items: center
+                &:hover
+                    color: var(--c-accent)
+                &__email
+                    margin-right: 28px
+                &__icon
+                    margin-right: 15px
+        &__callback
+            font-size: 18px
+            line-height: 1
+            color: #fff
+            padding-top: 16px
+            padding-bottom: 16px
+            padding-right: 14px
+            padding-left: 14px
+            border-radius: 40px
+            border: 1px solid var(--c-accent)
+            transition: all 0.2s
+            &:hover
+                background-color: var(--c-accent)
+                transition: all 0.2s
+    &__title
+        font-family: 'PT Serif', serif
+        font-size: 38px
+        line-height: 1.5
+        margin-bottom: 68px
+        &--bold
+            font-weight: bold
+    &-stock
+        display: inline-block
+        position: relative
+        padding-left: 25px
+        border-left: 4px solid var(--c-accent)
+        margin-bottom: 70px
+        &::after
+            content: ''
+            position: absolute
+            bottom: 18px
+            right: -120px
+            display: inline-block
+            width: 93px
+            height: 120px
+            background-image: url(../img/header/header-arrow.svg)
+            background-size: contain
+            background-repeat: no-repeat
+        &__title
+            font-size: 24px
+            font-family: 'PT Serif', serif
+            font-weight: bold
+            line-height: 1
+            margin-bottom: 15px
+        &__desc
+            font-size: 16px
+            line-height: 1.5
+            color: #dfdfdf
+    &-features
+        &-feature
+            margin-bottom: 40px
+            display: inline-flex
+            align-items: center
+            margin-right: 100px
+            &__icon
+                width: 64px
+                margin-right: 25px
+            &__title
+                @include text18
+            &--stretch
+                display: flex
+// FORM
+.form
+    background-color: var(--bg-form)
+    box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.3)
+    border-radius: 10px
+    padding-top: 38px
+    padding-bottom: 50px
+    padding-right: 34px
+    padding-left: 35px
+    text-align: center
+    color: #fff
+    position: relative
+    &::after
+        content: ''
+        pointer-events: none
+        display: inline-block
+        width: 95%
+        height: 95%
+        position: absolute
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        margin: auto
+        border: 1px solid rgba(255,255,255, 0.15)
+        border-radius: 10px
+    &__title
+        font-family: 'PT Serif', serif
+        font-weight: normal
+        font-size: 26px
+        text-align: center
+        line-height: 1.5
+        margin-bottom: 5px
+    &__subtitle
+        @include text16
+        color: #DFDFDF
+        margin-bottom: 20px
+    &__input
+        color: #fff
+        font-size: 18px
+        width: 100%
+        padding-top: 13px
+        padding-bottom: 13px
+        padding-left: 40px
+        padding-right: 40px
+        margin-bottom: 15px
+        border: none
+        border-bottom: 1px solid var(--c-oncontent-secondary)
+        &:focus
+            border-bottom: 1px solid #fff
+        &--name
+            margin-bottom: 20px
+        &--phone
+            margin-bottom: 20px
+        &--attach
+            width: 100%
+            margin-bottom: 20px
+    &__submit
+        @include buttonPrimary
+        font-size: 16px
+        margin-bottom: 20px
+        width: 100%
+    &-privacy__desc
+        font-size: 13px
+        color: var(--c-text-label)
+        &-link
+            font-size: 13px
+            border-bottom: 1px solid var(--c-text-label)
+            transition: all 0.2s
+            &:hover
+                color: var(--c-accent)
+                border-bottom: 1px solid var(--c-accent)
+                transition: all 0.2s
+// FEATURES
+.features
+    padding-top: 120px
+    padding-bottom: 60px
+    &__title
+        @include h2
+        margin-bottom: 70px
+        &--coloring
+            color: var(--c-accent)
+        &--bold
+            font-weight: bold
+    &-feature
+        display: flex
+        align-items: center
+        margin-bottom: 60px
+        &__img
+            width: 100px
+            margin-right: 25px
+        &__title
+            font-size: 18px
+            color: var(--c-text-second)
+            &--bold
+                font-weight: bold
+            &--coloring
+                color: var(--c-accent)
+// CRAFTS
+.crafts
+    background-image: url(../img/crafts/crafts-bg.png)
+    background-size: cover
+    background-position: top center
+    background-repeat: no-repeat
+    padding-top: 96px
+    padding-bottom: 100px
+    &__title
+        @include h2
+        margin-bottom: 70px
+    &-card
+        display: flex
+        align-items: flex-end
+        height: 250px
+        padding: 20px
+        margin-bottom: 30px
+        position: relative
+        color: #fff
+        &__img
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            bottom: 0
+            z-index: 1
+            border-radius: 5px
+            width: 100%
+            height: 100%
+        &-wrap
+            display: flex
+            justify-content: space-between
+            align-items: flex-end
+            position: relative
+            z-index: 2
+            width: 100%
+            display: flex
+            &-link
+                &__title
+                    @include h3
+            &-go
+                width: 40px
+                &__icon
+//STEPS
+@mixin steps-title
+    @include h3
+    color: var(--c-text-main)
+    padding-left: 16px
+    border-left: 4px solid var(--c-accent)
+    margin-bottom: 50px
+.steps
+    padding-top: 120px
+    padding-bottom: 120px
+    &__title
+        @include h2
+        margin-bottom: 70px
+        &--bold
+            font-weight: bold
+        &--coloring
+            color: var(--c-accent)
+    &-stage
+        &-1
+            margin-bottom: 100px
+            &__title
+                @include steps-title
+            &-table
+                &-row
+                    display: flex
+                    justify-content: space-between
+                    border-bottom: 1px solid #eee
+                    position: relative
+                    &:first-child
+                        position: sticky
+                        top: 0
+                        background-color: #fff
+                        z-index: 2
+                        // border-top: 1px solid #eee
+                    &:last-child
+                        border-bottom: none
+                    &-cell
+                        display: flex
+                        padding: 17px 0
+                        align-items: center
+                        justify-content: center
+                        width: 25%
+                        border-right: 1px solid #eee
+                        &:first-child
+                            justify-content: flex-start
+                        &:last-child
+                            border-right: none
+                        &__title
+                            font-size: 20px
+                            line-height: 1.5
+                            color: var(--c-text-main)
+                            &--centered
+                                align-self: center
+                                width: 100%
+                                text-align: center
+                            &--bold
+                                font-weight: bold
+                            &--color--secondary
+                                color: var(--c-text-secont)
+                        &__icon
+                            width: 36px
+        &-2
+            margin-bottom: 100px
+            &__title
+                @include steps-title
+            &-card
+                position: relative
+                box-shadow: var(--shadow-main)
+                border-radius: 10px
+                padding-top: 16px
+                padding-bottom: 16px
+                padding-left: 23px
+                padding-right: 22px
+                &__img
+                    width: 100%
+                &__number
+                    position: absolute
+                    left: 31px
+                    bottom: 16px
+                    font-size: 26px
+                    font-weight: bold
+                    color: var(--c-accent)
+        &-3
+            margin-bottom: 100px
+            &__title
+                @include steps-title
+            &-wrap
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                flex-wrap: wrap
+                gap: 30px 
+                padding-right: 20px
+                &-card
+                    padding: 17px 26px
+                    border-radius: 10px
+                    box-shadow: var(--shadow-main)
+                    position: relative
+                    background: #fff
+                    &__img
+                        width: 158px
+                    &__number
+                        position: absolute
+                        left: 13px
+                        bottom: 10px
+                        font-size: 22px
+                        font-weight: bold
+                        color: var(--c-accent)
+        &-4
+            margin-bottom: 70px
+            &__title
+                @include steps-title
+            &-card
+                border-radius: 10px
+                box-shadow: var(--shadow-main)
+                position: relative
+                padding: 20px
+                margin-bottom: 20px
+                background: #fff
+                &__name
+                    font-size: 20px
+                    font-weight: bold
+                    position: absolute
+                    top: 31px
+                    right: 34px
+                    text-align: right
+                    &--color-secondary
+                        color: var(--c-text-second)
+                    &--light
+                        font-weight: normal
+                        font-size: 16px
+                &__img
+                    width: 100%
+    &__button
+        @include buttonPrimary
+        padding-top: 20px
+        padding-bottom: 20px
+        padding-left: 50px
+        padding-right: 50px
+        display: block
+        margin-left: auto
+        margin-right: auto
+//OFFER
+.offer
+    padding-top: 151px
+    padding-bottom: 100px
+    &--bg-1
+        background-image: url(../img/form/form-1-bg.png)
+        background-size: cover
+        background-position: top center
+        background-repeat: no-repeat
+    &--bg-2
+        background-image: url(../img/form/form-2-bg.png)
+        background-size: cover
+        background-position: top center
+        background-repeat: no-repeat
+    &__title
+        @include h2
+        margin-bottom: 21px
+        text-align: left
+        &--coloring
+            color: var(--c-accent)
+        &--bold
+            font-weight: bold
+    &-stock
+        display: flex
+        align-items: center
+        margin-bottom: 29px
+        &__img
+            width: 60px
+            margin-right: 15px
+        &__title
+            font-size: 20px
+            line-height: 1.5
+// CLIENTS
+.clients
+    padding-top: 100px
+    padding-bottom: 100px
+    background-image: url(../img/clients/clients-bg.png)
+    background-size: cover
+    background-position: top center
+    background-repeat: no-repeat
+    &__title
+        @include h2
+        margin-bottom: 70px
+    &-list
+        display: flex
+        justify-content: space-between
+        &-card
+            position: relative
+            &::after
+                content: ''
+                position: absolute
+                z-index: 1
+                top: 0
+                left: 0
+                transform: rotate(10.46deg)
+                display: inline-block
+                width: 180px
+                height: 180px
+                background: var(--c-accent)
+                border-radius: 10px
+            &__img
+                position: relative
+                z-index: 2
+                width: 180px
+                box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.1)
+                border-radius: 10px
+                margin-bottom: 35px
+                object-fit: cover
+            &__name
+                @include h4
+                text-align: center
+                font-size: 22px
+                line-height: 1.5
+// BENEFITS
+.benefits
+    padding-top: 120px
+    padding-bottom: 120px
+    overflow-x: hidden
+    &__title
+        @include h2
+        margin-bottom: 70px
+        &--bold
+            font-weight: bold
+        &--coloring
+            color: var(--c-accent)
+    &-group
+        width: 100%
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: 100px
+        &-1
+            .benefits-group-wrap:before
+                margin-left: 40px
+        &-2
+            .benefits-group-wrap
+                transform: translateX(-40px)
+        &-3
+            margin-bottom: 0
+            .benefits-group-wrap
+                transform: translateX(30px)
+        &-list
+            display: flex
+            flex-direction: column
+            justify-content: center
+            height: 100%
+            &-card
+                border: 1px solid var(--c-accent)
+                padding: 19px
+                margin-bottom: 50px
+                position: relative
+                &:last-child
+                    margin-bottom: 0
+                &__number
+                    display: grid
+                    align-content: center
+                    padding-left: 10px
+                    padding-right: 10px
+                    max-height: 100px
+                    width: 100px
+                    color: var(--c-accent)
+                    font-weight: bold
+                    font-size: 64px
+                    position: absolute
+                    left: -56px
+                    top: 19px
+                    bottom: 0
+                    background: linear-gradient(90deg, #fff 60%, #fff 60%, transparent 60%, transparent)
+                    text-align: right
+                &-inner
+                    background-color: var(--bg-secondary)
+                    padding-top: 17px
+                    padding-bottom: 21px
+                    padding-left: 44px
+                    padding-right: 36px
+                    &__title
+                        @include h4
+                        color: var(--c-text-main)
+                        margin-bottom: 5px
+                    &__desc
+                        @include text16
+        // &--reverse
+            // flex-direction: row-reverse
+        &-wrap
+            position: relative
+            display: flex
+            justify-content: center
+            align-items: center
+            flex-wrap: wrap
+            padding-left: 100px
+            height: 100%
+            &:before
+                content: '}'
+                top: 0
+                bottom: 0
+                left: 0
+                font-size: 300px
+                line-height: 1
+                color: var(--c-accent)
+                margin-top: auto
+                margin-bottom: auto
+                margin-left: 0
+                margin-right: 150px
+                position: absolute
+
+                display: grid
+                align-content: center
+            &__name
+                font-size: 72px
+                line-height: 1
+                color: var(--c-accent)
+                margin-bottom: 30px
+                font-weight: bold
+                &:last-child
+                    margin-bottom: 0
+                &--transparent
+                    color: var(--bg-secondary)
+                &--stroke
+                    color: transparent
+                    text-stroke: 1px #f5f5f5
+                    -webkit-text-stroke: 1px #f5f5f5
+            &--reverse
+                padding-left: 0
+                padding-right: 100px
+                &:before
+                    content: '{'
+                    left: unset
+                    right: 0
+                    margin-right: 52px
+                    margin-left: 0
+// WARRANTIES
+.warranties
+    padding-bottom: 90px
+    &__title
+        @include h2
+        margin-bottom: 40px
+    &-card
+        height: calc(100% - 30px)
+        padding: 57px 30px
+        box-shadow: var(--shadow-main)
+        border-radius: 10px
+        background-color: #fff
+        margin-bottom: 30px
+        background-position: center
+        background-repeat: no-repeat
+        &--price
+            background-image: url(../img/warranties/price-bg.svg)
+        &--offer
+            background-image: url(../img/warranties/offer-bg.svg)
+        &--deadline
+            background-image: url(../img/warranties/deadline-bg.svg)
+        &--unique
+            background-image: url(../img/warranties/unique-bg.svg)
+        &--materials
+            background-image: url(../img/warranties/materials-bg.svg)
+        &--quality
+            background-image: url(../img/warranties/quality-bg.svg)
+        &__img
+            display: block
+            width: 70px
+            margin-bottom: 15px
+        &__title
+            @include h4
+            margin-bottom: 10px
+        &__desc
+            @include text16
+        &--coloring
+            background-color: var(--c-accent)
+// CONTACTS
+.contacts
+    padding-bottom: 100px
+    &__title
+        @include h2
+        margin-bottom: 70px
+    &-card
+        &__img
+            width: 70px
+            margin-bottom: 15px
+            display: block
+        &__title
+            @include h4
+            margin-bottom: 6px
+            color: var(--c-text-main)
+        &__link
+            @include text18
+            color: var(--c-text-main)
+            transition: color 0.2s
+            &:hover
+                color: var(--c-accent)
+                transition: color 0.2s
+// MAP
+.map
+    &__img
+        width: 100%
+        height: 400px
+        object-fit: cover
+        margin-bottom: -8px
+// FOOTER
+.footer
+    color: var(--c-text-second)
+    background-color: var(--c-accent)
+    padding-top: 17px
+    padding-bottom: 17px
+    &-wrap
+        display: flex
+        justify-content: space-between
+        align-items: center
+        &__link
+            line-height: 1
+            border-bottom: 1px solid var(--c-text-second)
+            &:hover
+                color: #fff
+                transition: all 0.2s
+                border-bottom: 1px solid #fff
+
+
+
+
+
+@media (max-width: 1400px)
+    html
+        --fz-title: 42px;
+    .form
+        padding-left: 24px
+        padding-right: 24px
+    .steps-stage-3-wrap-card
+        padding-left: 16px
+        padding-right: 16px
+    .benefits-group-3
+        .benefits-group-wrap:before
+            left: -30px
+    .benefits-group-wrap
+        padding-left: 70px
+        &__name
+            font-size: 62px
+    .header
+        &-menu
+            margin-bottom: 50px
+            &-contacts
+                &-contact
+                    &__email
+                        font-size: 15px
+                    &__phone
+                        font-size: 15px
+            &__callback
+                font-size: 14px
+    .features
+        padding-top: 60px
+        &__title
+            font-size: var(--fz-title)
+    // crafts
+    .crafts
+        padding-top: 80px
+        padding-bottom: 60px
+        &__title
+            font-size: var(--fz-title)
+            margin-bottom: 50px
+        &-card
+            height: 210px
+            &-wrap
+                &-link
+                    &__title
+                        line-height: 1.1
+    // steps
+    .steps
+        padding-top: 80px
+        padding-bottom: 80px
+        &__title
+            font-size: var(--fz-title)
+        &-stage
+            &-4
+                margin-bottom: 50px
+                &-card__name
+                    font-size: 18px
+    .offer
+        &__title
+            font-size: var(--fz-title)
+    .clients-list
+        flex-wrap: wrap
+        justify-content: center
+        &-card
+            margin-left: 30px
+            margin-right: 30px
+            margin-bottom: 30px
+            &__img
+                margin-bottom: 20px
+
+@media (max-width: 1200px)
+    .benefits-group-wrap
+        display: none
+        padding-left: 0
+        &:before
+            contnet: ''
+@media (max-width: 990px)
+    .header
+        &-menu
+            margin-bottom: 60px
+            &-contacts
+                flex-direction: column
+                align-items: flex-start
+                justify-content: space-around
+                padding-left: 30px
+        &-features
+            display: flex
+            flex-wrap: wrap
+    .clients
+        &-list
+            flex-wrap: wrap
+            justify-content: center
+            &-card
+                margin-right: 20px
+                margin-left: 20px
+                margin-bottom: 35px
+    .steps-stage-3-wrap
+        justify-content: center
+    .benefits
+        &-group
+            &-wrap:before
+                display: none
+            &-2
+                transform: none
+            &-3
+                .benefits-group-list
+                    transform: translateX(-40px)
+                .benefits-group-wrap
+                        transform: translateX(-10px);
+                .benefits-group-wrap__name
+                    font-size: 62px
+    .contacts-card
+        margin-bottom: 30px
+    .footer-wrap__title
+        width: 190px
+
+
+@media (max-width: 576px)
+    .header
+        padding-bottom: 75px
+        &__title
+            font-size: 20px
+            margin-bottom: 28px
+        &-stock
+            margin-bottom: 40px
+            padding-left: 20px
+            &:after
+                display: none
+            &__title
+                font-size: 18px
+            &__desc
+                font-size: 14px
+        &-features
+            &-feature
+                margin-right: 0
+    .form
+        padding-left: 16px
+        padding-right: 16px
+        &__title
+            font-size: 20px
+        &__subtitle
+            font-size: 13px
+        &__input
+            font-size: 16px
+        &__submit
+            padding-left: 20px
+            padding-right: 2px
+    .section__title
+        // font-size: 28px
+        font-size: 23px
+        margin-bottom: 40px
+        // text-align: left
+        br
+            display: none
+    .features
+        padding-top: 70px
+        padding-bottom: 20px
+        &__title br
+            display: none
+    .crafts
+        padding-top: 60px
+        padding-bottom: 60px
+    .steps
+        padding-top: 60px
+        padding-bottom: 60px
+        &-stage
+            &-1
+                margin-bottom: 50px
+                &-table
+                    width: 300px
+                    overflow-x: scroll
+                &__title
+                    font-size: 16px
+                    margin-bottom: 20px
+        &-stage-2
+            margin-bottom: 50px
+        &-stage-3
+            margin-bottom: 50px
+    .steps-stage-1-table
+        box-shadow: inset -10px 0 10px #f0f0f0
+    .steps-stage-1-table-row
+        width: 200%
+        &:first-child
+            background: none
+    .steps-stage-1-table-row .steps-stage-1-table-row-cell:first-child
+        width: 30%
+    .steps-stage-1-table-row-cell__title
+        font-size: 16px
+        margin-bottom: 20px
+    .steps-stage-2__title
+        font-size: 16px
+        margin-bottom: 20px
+    .steps-stage-3__title
+        font-size: 16px
+        margin-bottom: 20px
+    .steps-stage-4
+        margin-bottom: 50px
+        &__title
+            font-size: 16px
+            margin-bottom: 20px
+    .steps-stage-3-wrap-card__img
+        width: 88px
+    .steps__button
+        padding-left: 20px
+        padding-right: 20px
+    .offer
+        padding-top: 60px
+        padding-bottom: 60px
+        &__title
+            font-size: 22px
+        &-stock__title
+            font-size: 16px
+            br
+                display: none
+    // CLIENTS
+    .clients
+        padding-top: 60px
+        padding-bottom: 60px
+        &-list
+            &-card
+                margin-left: 10px
+                margin-right: 10px
+                margin-bottom: 30px
+                &::after
+                    width: 120px
+                    height: 120px
+                &__img
+                    margin-bottom: 10px
+                    width: 120px
+                &__name
+                    line-height: 1.3
+                    font-size: 16px
+    // BENEFITS
+    .benefits
+        padding-top: 60px
+        padding-bottom: 60px
+    .benefits-group-wrap
+        display: none
+    .benefits-group-3 .benefits-group-list
+        transform: none
+    .benefits-group
+        margin-bottom: 20px
+    .benefits-group-list-card
+        padding: 10px
+        margin-bottom: 20px
+        &__number
+            font-size: 40px
+            left: -57px
+            max-height: 60px
+    .benefits-group-list-card-inner
+        padding-right: 18px
+        &__title
+            font-size: 18px
+            line-height: 1.25
+    .warranties
+        padding-bottom: 50px
+        &-card
+            padding: 17px 20px
+            br
+                display: none
