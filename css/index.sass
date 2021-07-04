@@ -59,9 +59,16 @@ html
     border-radius: 48px
     transition: all 0.2s
     &:hover
-        transform: translateY(-1px) scale(1.02)
+        // transform: translateY(-1px) scale(1.02)
         background-image: var(--grad-accent--hover)
         transition: all 0.2s
+        box-shadow: none
+        transform: translateY(2px)
+    &:focus
+        background-image: var(--grad-accent--hover)
+        transition: all 0.2s
+        box-shadow: none
+        transform: translateY(2px)
 
 
 *
@@ -98,12 +105,12 @@ body
 
 
 
-
-
 // HEADER
 .header
+    padding-top: 200px
     padding-bottom: 175px
     background-image: url(../img/header/header-bg.jpg)
+    background-color: #131112
     background-size: cover
     background-position: bottom center
     background-repeat: no-repeat
@@ -112,7 +119,17 @@ body
         padding-top: 25px
         padding-bottom: 25px
         border-bottom: 1px solid rgba(255,255,255,.15)
+        position: fixed
+        width: 100%
+        top: 0
+        left: 0
         margin-bottom: 100px
+        z-index: 500
+        transition: background-color 0.3s
+        &--scrolled
+            background-color: #131112
+            transition: background-color 0.3s
+            border-bottom: none
         &-logo
             width: 100%
             height: 100%
@@ -214,8 +231,8 @@ body
         content: ''
         pointer-events: none
         display: inline-block
-        width: 95%
-        height: 95%
+        width: calc( 100% - 20px )
+        height: calc( 100% - 20px )
         position: absolute
         top: 0
         left: 0
@@ -255,6 +272,49 @@ body
         &--attach
             width: 100%
             margin-bottom: 20px
+        &--question
+            background: none
+            resize: none
+        &-attach-text
+            font-size: 18px
+            color: var(--c-accent)
+            line-height: 1
+            display: block
+            text-align: left
+            padding-left: 40px
+            padding-bottom: 5px
+            &--opacity
+                font-size: 16px
+                color: #9E9E9E
+        &-wrap
+            position: relative
+            &:before
+                content: ''
+                display: block
+                position: absolute
+                top: 35%
+                left: 10px
+                bottom: 0
+                width: 20px
+                height: 20px
+                transform: translateY(-50%)
+                background-size: contain
+                background-position: center
+                background-repeat: no-repeat
+            &--name:before
+                background-image: url(../img/form/form-name.svg)
+            &--phone:before
+                background-image: url(../img/form/form-phone.svg)
+            &--question
+                margin-bottom: 15px
+                &:before
+                    background-image: url(../img/form/form-question.svg)
+            &--attach
+                display: block
+                cursor: pointer
+                margin-bottom: 22px
+                &:before
+                    background-image: url(../img/form/form-attach.svg)
     &__submit
         @include buttonPrimary
         font-size: 16px
@@ -271,6 +331,37 @@ body
                 color: var(--c-accent)
                 border-bottom: 1px solid var(--c-accent)
                 transition: all 0.2s
+    &-privacy
+        width: 100%
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        &__checkbox
+            display: inline-flex
+            width: 15px
+            height: 15px
+            align-items: center
+            justify-content: center
+            background-color: rgb(130,130,130)
+            border-radius: 2px
+            position: relative
+            cursor: pointer
+            margin-right: 10px
+            &::after
+                content: ''
+                display: inline-block
+                position: absolute
+                width: 4px
+                height: 4px
+                border-radius: 50%
+            // &--checked
+                // &:after
+                    // background-color: #000
+.form-privacy__checkbox-hidden:checked + .form-privacy__checkbox
+    background-image: url(../img/form/form-check.svg)
+    background-size: 70%
+    background-position: center
+    background-repeat: no-repeat
 // FEATURES
 .features
     padding-top: 120px
@@ -315,6 +406,23 @@ body
         margin-bottom: 30px
         position: relative
         color: #fff
+        border-radius: 5px
+        overflow: hidden
+        transition: all 0.2s
+        &:before
+            content: ''
+            display: block
+            position: absolute
+            border-radius: 5px
+            z-index: 2
+            left: 0
+            top: 0
+            width: 100%
+            height: 100%
+            background-image: linear-gradient(40.85deg, rgba(0, 0, 0, 0.6) 20.14%, rgba(0, 0, 0, 0) 61.79%)
+        &:hover .crafts-card__img
+            transform: scale(1.1)
+            transition: all 0.3s
         &__img
             position: absolute
             top: 0
@@ -325,6 +433,8 @@ body
             border-radius: 5px
             width: 100%
             height: 100%
+            object-fit: cover
+            transition: all 0.3s
         &-wrap
             display: flex
             justify-content: space-between
@@ -336,6 +446,7 @@ body
             &-link
                 &__title
                     @include h3
+                    line-height: 1.2
             &-go
                 width: 40px
                 &__icon
@@ -412,6 +523,7 @@ body
                 padding-bottom: 16px
                 padding-left: 23px
                 padding-right: 22px
+                background-color: #fff
                 &__img
                     width: 100%
                 &__number
@@ -513,6 +625,92 @@ body
         &__title
             font-size: 20px
             line-height: 1.5
+    &-timer
+        display: inline-block
+        &__title
+            font-weight: bold
+            font-size: 22px
+            line-height: 150%
+            margin-bottom: 20px
+        &__counter
+            color: var(--c-accent)
+            font-size: 96px
+            line-height: 100%
+            font-weight: bold
+            &-divider
+                opacity: 0.5
+        &-counter
+            &-names
+                display: flex
+                justify-content: space-between
+                width: 100%
+                padding-right: 25px
+                padding-left: 40px
+// CASES
+.cases
+    padding-top: 83px
+    padding-bottom: 120px
+    &__title
+        @extend .features__title
+    img
+        width: 100%
+    &-showcase
+        position: relative
+        &-tabbar
+            display: flex
+            justify-content: space-between
+            padding-bottom: 10px
+            padding-top: 10px
+            margin-bottom: 40px
+            background-color: #fff
+            position: sticky
+            top: 100px
+            z-index: 2
+            &__button
+                background-color: #F8F8F8
+                font-size: 18px
+                line-height: 150%
+                padding: 10px 20px
+                border-radius: 5px
+                &--current
+                    background-color: var(--c-accent)
+        &-tabs
+            position: relative
+            z-index: 1
+            &-tab
+                display: none
+                &--current
+                    display: block
+                &-card
+                    display: block
+                    position: relative
+                    &:after
+                        content: ''
+                        display: block
+                        width: 100%
+                        height: calc(100% - 24px)
+                        // height: 100%
+                        position: absolute
+                        top: 0
+                        right: 0
+                        background-image: url(../img/cases/zoom.svg)
+                        background-size: 50px
+                        background-position: center
+                        background-repeat: no-repeat
+                        background-color: rgba(255, 183, 94, 0.8)
+                        z-index: 2
+                        opacity: 0
+                        transition: opacity 0.3s
+                        cursor: pointer
+                    &:hover::after
+                        transition: opacity 0.3s
+                        opacity: 1
+                        
+                    &__img
+                        margin-bottom: 18px
+                        box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.05)
+                        position: relative
+                        z-index: 1
 // CLIENTS
 .clients
     padding-top: 100px
@@ -582,6 +780,8 @@ body
             margin-bottom: 0
             .benefits-group-wrap
                 transform: translateX(30px)
+            .benefits-group-wrap__name
+                font-size: 62px
         &-list
             display: flex
             flex-direction: column
@@ -673,6 +873,7 @@ body
                     margin-left: 0
 // WARRANTIES
 .warranties
+    padding-top: 120px
     padding-bottom: 90px
     &__title
         @include h2
@@ -683,6 +884,7 @@ body
         box-shadow: var(--shadow-main)
         border-radius: 10px
         background-color: #fff
+        background-size: 60%
         margin-bottom: 30px
         background-position: center
         background-repeat: no-repeat
@@ -709,6 +911,134 @@ body
             @include text16
         &--coloring
             background-color: var(--c-accent)
+// REVIEWS
+.reviews
+    background-image: url(../img/reviews/reviews-bg.png)
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center
+    padding-top: 100px
+    padding-bottom: 100px
+    &__title
+        @extend .features__title
+        margin-bottom: 70px
+        &--coloring
+            @extend .features__title--coloring
+        &--bold
+            @extend .features__title--bold
+    &-slider
+        max-width: 974px
+        width: 100%
+        margin-left: auto
+        margin-right: auto
+        position: relative
+        &-slide
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.05)
+        .owl-dots .owl-dot.active span,
+        .owl-dots .owl-dot:hover span
+            background: var(--c-accent)
+        .owl-dots .owl-dot span
+            background: #fff
+            border: 1px solid var(--c-accent)
+        .owl-nav button.owl-next,
+            position: absolute
+            right: -90px
+            top: 50%
+            transform: translateY(-50%)
+            transition: transform 0.3s
+            &:hover
+                transform: translateY(-50%) scale(1.3, 1.3)
+                transition: transform 0.3s
+        .owl-nav button.owl-prev
+            position: absolute
+            left: -90px
+            top: 50%
+            transform: translateY(-50%) scale(-1, 1)
+            transition: transform 0.3s
+            &:hover
+                transform: translateY(-50%) scale(-1.3, 1.3)
+                transition: transform 0.3s
+        .owl-nav button.owl-next,
+        .owl-nav button.owl-prev
+            span
+                width: 40px
+                height: 28px
+                background: url(../img/icons/slider-arrow.svg)
+                display: block
+                color: transparent
+            &:hover
+                background: transparent
+
+// FAQ
+.faq
+    padding-top: 300px
+    padding-bottom: 120px
+    position: relative
+    &::before
+        content: '?'
+        position: absolute
+        left: 0
+        top: 0
+        z-index: 1
+        font-weight: bold
+        font-size: 550px
+        line-height: 150%
+        display: flex
+        align-items: center
+        color: #F8F8F8
+    .container
+        position: relative
+        z-index: 2
+    &__title
+        @extend .offer__title
+        margin-bottom: 70px
+        &--coloring
+            @extend .offer__title--coloring
+        &--bold
+            @extend .offer__title--bold
+    &-list
+        &-card
+            display: block
+            width: 100%
+            margin-bottom: 20px
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.05)
+            border-radius: 25px
+            overflow: hidden
+            transition: all 0.3s
+            &:hover
+                transition: all 0.3s
+                transform: translateY(-2px)
+                box-shadow: 0px 15px 35px rgba(0,0,0,0.1)
+            &--opened
+                &:hover
+                    transform: translateY(0)
+                    box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.05)
+            &-top
+                display: flex
+                justify-content: space-between
+                align-items: center
+                padding: 13px 20px 13px 30px
+                background: #FFFFFF
+                cursor: pointer
+                &__title
+                    font-weight: bold
+                    font-size: 16px
+                &__button
+                    width: 25px
+                    height: 25px
+                    transition: all 0.3s
+                    &-icon
+                        width: 100%
+                        height: 100%
+                        object-fit: contain
+                &--opened
+                    .faq-list-card-top__button
+                        transform: rotate(90deg)
+                        transition: all 0.3s
+            &-bottom
+                display: none
+                padding: 0 20px 13px 30px
+                background-color: #fff
 // CONTACTS
 .contacts
     padding-bottom: 100px
@@ -733,7 +1063,7 @@ body
                 transition: color 0.2s
 // MAP
 .map
-    &__img
+    &__frame
         width: 100%
         height: 400px
         object-fit: cover
@@ -754,267 +1084,548 @@ body
             &:hover
                 color: #fff
                 transition: all 0.2s
-                border-bottom: 1px solid #fff
+                border-bottom: 1px solid transparent
 
 
 
 
-
-@media (max-width: 1400px)
+@media (max-width: 1199px)
     html
-        --fz-title: 42px;
-    .form
-        padding-left: 24px
-        padding-right: 24px
-    .steps-stage-3-wrap-card
-        padding-left: 16px
-        padding-right: 16px
-    .benefits-group-3
-        .benefits-group-wrap:before
-            left: -30px
-    .benefits-group-wrap
-        padding-left: 70px
-        &__name
-            font-size: 62px
+        --fz-title: 42px
     .header
-        &-menu
-            margin-bottom: 50px
-            &-contacts
-                &-contact
-                    &__email
-                        font-size: 15px
-                    &__phone
-                        font-size: 15px
-            &__callback
-                font-size: 14px
-    .features
-        padding-top: 60px
+        padding-bottom: 95px
+    .header-menu
+        margin-bottom: 50px
+        &-contacts
+            flex-direction: column
+            align-items: flex-start
+            margin-left: 50px
+            &-contact
+                margin-bottom: 10px
+    .header-stock::after
+        right: -80px
+    .header-features-feature
+        margin-right: 40px
+        &--stretch
+            display: inline-flex
         &__title
-            font-size: var(--fz-title)
-    // crafts
-    .crafts
+            font-size: 16px
+    .section__title
+        font-size: var(--fz-title)
+        margin-bottom: 40px
+    
+    .features
         padding-top: 80px
+        padding-bottom: 40px
+        &-feature__img
+            width: 80px
+
+
+    .crafts
+        padding-top: 60px
+        padding-bottom: 60px
+        &-card
+            height: 220px
+    .steps
+        padding-top: 60px
+        padding-bottom: 60px
+        &-stage-3-wrap-card__img
+            width: 150px
+        .steps-stage-4
+            margin-bottom: 30px
+    .steps-stage-4-card__name
+        font-size: 16px
+        &--light
+            font-size: 14px
+    .offer
+        padding-top: 60px
         padding-bottom: 60px
         &__title
-            font-size: var(--fz-title)
-            margin-bottom: 50px
-        &-card
-            height: 210px
-            &-wrap
-                &-link
-                    &__title
-                        line-height: 1.1
-    // steps
-    .steps
-        padding-top: 80px
-        padding-bottom: 80px
-        &__title
-            font-size: var(--fz-title)
-        &-stage
-            &-4
-                margin-bottom: 50px
-                &-card__name
-                    font-size: 18px
-    .offer
-        &__title
-            font-size: var(--fz-title)
-    .clients-list
-        flex-wrap: wrap
-        justify-content: center
-        &-card
-            margin-left: 30px
-            margin-right: 30px
-            margin-bottom: 30px
-            &__img
-                margin-bottom: 20px
-
-@media (max-width: 1200px)
-    .benefits-group-wrap
-        display: none
-        padding-left: 0
-        &:before
-            contnet: ''
-@media (max-width: 990px)
-    .header
-        &-menu
-            margin-bottom: 60px
-            &-contacts
-                flex-direction: column
-                align-items: flex-start
-                justify-content: space-around
-                padding-left: 30px
-        &-features
-            display: flex
-            flex-wrap: wrap
+            font-size: 40px
     .clients
+        padding-top: 60px
+        padding-bottom: 60px
         &-list
             flex-wrap: wrap
             justify-content: center
             &-card
-                margin-right: 20px
-                margin-left: 20px
+                margin-right: 30px
+                margin-left: 30px
                 margin-bottom: 35px
-    .steps-stage-3-wrap
-        justify-content: center
-    .benefits
-        &-group
-            &-wrap:before
-                display: none
-            &-2
-                transform: none
-            &-3
-                .benefits-group-list
-                    transform: translateX(-40px)
-                .benefits-group-wrap
-                        transform: translateX(-10px);
-                .benefits-group-wrap__name
-                    font-size: 62px
-    .contacts-card
-        margin-bottom: 30px
-    .footer-wrap__title
-        width: 190px
-
-
-@media (max-width: 576px)
-    .header
-        padding-bottom: 75px
-        &__title
-            font-size: 20px
-            margin-bottom: 28px
-        &-stock
-            margin-bottom: 40px
-            padding-left: 20px
-            &:after
-                display: none
-            &__title
-                font-size: 18px
-            &__desc
-                font-size: 14px
-        &-features
-            &-feature
-                margin-right: 0
-    .form
-        padding-left: 16px
-        padding-right: 16px
-        &__title
-            font-size: 20px
-        &__subtitle
-            font-size: 13px
-        &__input
-            font-size: 16px
-        &__submit
-            padding-left: 20px
-            padding-right: 2px
-    .section__title
-        // font-size: 28px
-        font-size: 23px
-        margin-bottom: 40px
-        // text-align: left
-        br
-            display: none
-    .features
-        padding-top: 70px
-        padding-bottom: 20px
-        &__title br
-            display: none
-    .crafts
-        padding-top: 60px
-        padding-bottom: 60px
-    .steps
-        padding-top: 60px
-        padding-bottom: 60px
-        &-stage
-            &-1
-                margin-bottom: 50px
-                &-table
-                    width: 300px
-                    overflow-x: scroll
-                &__title
-                    font-size: 16px
-                    margin-bottom: 20px
-        &-stage-2
-            margin-bottom: 50px
-        &-stage-3
-            margin-bottom: 50px
-    .steps-stage-1-table
-        box-shadow: inset -10px 0 10px #f0f0f0
-    .steps-stage-1-table-row
-        width: 200%
-        &:first-child
-            background: none
-    .steps-stage-1-table-row .steps-stage-1-table-row-cell:first-child
-        width: 30%
-    .steps-stage-1-table-row-cell__title
-        font-size: 16px
-        margin-bottom: 20px
-    .steps-stage-2__title
-        font-size: 16px
-        margin-bottom: 20px
-    .steps-stage-3__title
-        font-size: 16px
-        margin-bottom: 20px
-    .steps-stage-4
-        margin-bottom: 50px
-        &__title
-            font-size: 16px
-            margin-bottom: 20px
-    .steps-stage-3-wrap-card__img
-        width: 88px
-    .steps__button
-        padding-left: 20px
-        padding-right: 20px
-    .offer
-        padding-top: 60px
-        padding-bottom: 60px
-        &__title
-            font-size: 22px
-        &-stock__title
-            font-size: 16px
-            br
-                display: none
-    // CLIENTS
-    .clients
-        padding-top: 60px
-        padding-bottom: 60px
-        &-list
-            &-card
-                margin-left: 10px
-                margin-right: 10px
-                margin-bottom: 30px
-                &::after
-                    width: 120px
-                    height: 120px
                 &__img
                     margin-bottom: 10px
-                    width: 120px
-                &__name
-                    line-height: 1.3
-                    font-size: 16px
+
     // BENEFITS
     .benefits
         padding-top: 60px
         padding-bottom: 60px
+        &-group-wrap--reverse:before
+            margin-right: 0
+    .benefits-group-1 .benefits-group-wrap:before
+        margin-left: 0
+    .benefits-group-wrap 
+        .benefits-group-wrap__name
+            font-size: 46px
+    .contacts-card__link
+        font-size: 16px
+    .cases-showcase-tabbar__button
+        font-size: 14px
+    .cases__title
+        margin-bottom: 20px
+
+@media (max-width: 1170px)
+    html
+        --fz-title: 36px
+    .header-stock::after
+        right: -110px
+    .steps-stage
+        margin-bottom: 80px
+    .clients-list-card__name
+        font-size: 20px
+
+@media (max-width: 991px)
+    html
+        --fz-title: 32px
+    .header-menu
+        &-contacts
+            margin-left: 10px
+            &-contact
+                font-size: 16px
+                &__email
+                    margin-right: 0
+    .header-menu__callback
+        font-size: 14px
+        padding-right: 10px
+        padding-left: 10px
+    .header__title
+        font-size: 30px
+        margin-bottom: 38px
+    .header-stock
+        margin-bottom: 50px
+    .header-features
+        &-feature
+            margin-right: 20px
+            margin-bottom: 50px
+            &__icon
+                width: 50px
+                margin-right: 15px
+    .form__input
+        font-size: 16px
+    .features
+        padding-top: 70px
+        padding-bottom: 0
+    .features-feature
+        margin-bottom: 50px
+        &__title
+            font-size: 16px
+            max-width: 210px
+    .crafts-card-wrap-link__title
+        font-size: 24px
+    .steps-stage-1-table-row-cell
+        padding: 8px 0
+    .steps-stage-1-table-row-cell__title
+        font-size: 14px
+    .steps-stage-1-table-row-cell__icon
+        width: 32px
+    .steps-stage-1__title
+        font-size: 20px
+        margin-bottom: 30px
+    .steps-stage-2__title
+        font-size: 20px
+        margin-bottom: 30px
+    .steps-stage-3__title
+        font-size: 20px
+        margin-bottom: 30px
+    .steps-stage-4__title
+        font-size: 20px
+        margin-bottom: 30px
+    .steps-stage
+        margin-bottom: 60px
+    .steps-stage-2-card
+        margin-bottom: 20px
+    .steps-stage-4-card__name
+        font-size: 16px
+    .steps-stage-4-card__name--light
+        font-size: 14px
+    .steps-stage-4-card
+        padding: 10px
+    .steps__button
+        font-size: 16px
+    .offer__title
+        text-align: center
+    .offer-stock
+        justify-content: center
+    .offer-timer
+        margin-bottom: 40px
+        max-width: 480px
+        width: 100%
+        margin-left: auto
+        margin-right: auto
+        display: block
+    .offer-timer__counter
+        text-align: center
+    .clients
+        padding-bottom: 20px
+    .clients-list-card__img
+        width: 160px
+    .clients-list-card::after
+        width: 160px
+        height: 160px
+    // BENEFITS
+    .benefits-group
+        margin-bottom: 50px
+        br
+            display: none
     .benefits-group-wrap
         display: none
-    .benefits-group-3 .benefits-group-list
-        transform: none
-    .benefits-group
-        margin-bottom: 20px
-    .benefits-group-list-card
-        padding: 10px
-        margin-bottom: 20px
-        &__number
-            font-size: 40px
-            left: -57px
-            max-height: 60px
-    .benefits-group-list-card-inner
-        padding-right: 18px
-        &__title
-            font-size: 18px
-            line-height: 1.25
+    .benefits-group--reverse 
+        .d-flex
+            width: 100%
     .warranties
-        padding-bottom: 50px
+        br
+            display: none
+    .warranties-card__title
+        font-size: 21px
+    .contacts-card
+        margin-bottom: 50px
+    .footer-wrap__title
+        max-width: 270px
+    .offer-timer__title
+        text-align: center
+    .cases
+        padding-bottom: 40px
+        padding-top: 63px
+    .cases-showcase-tabbar
+        flex-wrap: wrap
+        justify-content: flex-start
+        gap: 10px
+        margin-bottom: 20px
+    .reviews__title,
+    .cases__title,
+    .faq__title
+        font-size: var(--fz-title);
+        margin-bottom: 15px
+    .faq
+        padding-top: 100px
+    .faq-list
+        margin-bottom: 50px
+
+@media (max-width: 767px)
+    .header
+        padding-bottom: 65px
+        padding-top: 250px
+        &-menu
+            padding-bottom: 15px
+            margin-bottom: 30px
+            position: absolute
+            &-logo__img
+                width: auto
+                height: 30px
+                margin-bottom: 20px
+                margin-left: auto
+                margin-right: auto
+            &__callback
+                font-size: 14px
+                width: 100%
+            &-contacts
+                align-items: center
+        &__title
+            font-size: 26px
+        &-stock
+            &:after
+                bottom: 0
+            &__title
+                font-size: 22px
+    .header-stock:after
+        content: none
+    .steps__title
+        font-size: 24px
+    .steps-stage-3-wrap
+        padding-bottom: 0
+        gap: 20px
+        &-card__img
+            width: 100px
+    .steps__button
+        font-size: 15px
+    .offer__title
+        font-size: 32px
+    .offer-stock__title
+        font-size: 17px
+    .benefits-group-wrap
+        display: none
+    .section__title
+        font-size: 32px
+        br
+            display: none
+    .contacts
+        padding-bottom: 45px
+    .footer-wrap
+        flex-direction: column
+        text-align: center
+        &__title
+            margin-bottom: 10px
+        &__link
+            margin-bottom: 10px
+    .cases-showcase-tabbar
+        top: 0
+    .warranties-card
+        padding: 47px 20px 30px
+    .warranties-card__desc
+        font-size: 15px
+    .cases-showcase-tabbar
+        padding-left: 10px
+        padding-right: 10px
+    
+
+@media (max-width: 576px)
+    html
+        --fz-title: 20px
+    .section__title
+        font-size: 20px
+        br
+            display: none
+    .header
+        padding-bottom: 45px
+        &__title
+            font-size: 20px
+        &-menu
+            &-contacts
+                margin-bottom: 10px
+            &-logo__img
+                margin-bottom: 10px
+            &__callback
+                display: block
+                width: 100%
+                font-size: 14px
+        &-stock
+            padding-left: 15px
+            margin-bottom: 30px
+            &__title
+                font-size: 18px
+                margin-bottom: 5px
+        &-features
+            margin-bottom: 20px
+            &-feature
+                margin-bottom: 20px
+                &__title
+                    br
+                        display: none
+    .form
+        padding-top: 28px
+        padding-bottom: 28px
+        padding-right: 20px
+        padding-left: 20px
+        &__title
+            font-size: 20px
+        &__subtitle
+            font-size: 14px
+        &__input
+            font-size: 14px
+        &__submit
+            font-size: 14px
+    .form-privacy__desc
+        font-size: 12px
+        &-link
+            font-size: 12px
+    .features
+        padding-top: 50px
+        padding-bottom: 10px
+        &-feature
+            margin-bottom: 40px
+            &__img
+                width: 80px
+                margin-right: 20px
+            &__title
+                max-width: 190px
+                font-size: 15px
+    .crafts
+        padding-bottom: 40px
+        padding-top: 40px
+    .crafts-card-wrap-link__title
+        font-size: 20px
+    .steps-stage-1-table
+        width: 100%
+        overflow-x: auto
+        overflow-y: visible
+    .steps-stage-1-table-row
+        width: 180%
+    .steps-stage-1-table-row-cell
+        position: relative
+        width: 70%
+    .steps-stage-1-table-row:first-child
+        .steps-stage-1-table-row-cell__title--centered    
+            text-align: left
+            position: absolute
+            top: 45px
+            left: 15px
+            transform: rotate(45deg)
+    .steps-stage-1-table-row:first-child
+        .steps-stage-1-table-row-cell
+            padding-top: 90px
+        .steps-stage-1-table-row-cell:last-child
+            .steps-stage-1-table-row-cell__title
+                padding-left: 30px
+    .steps-stage-3-wrap
+        gap: 10px
+        justify-content: center
+        padding-right: 0
         &-card
-            padding: 17px 20px
-            br
-                display: none
+            &__img
+                width: 80px
+    .steps__button
+        padding-left: 30px
+        padding-right: 30px
+        font-size: 14px
+    .steps__title
+        font-size: 18px
+        br
+            display: none
+    .steps-stage-1__title
+        font-size: 16px
+    .steps-stage-2__title
+        font-size: 16px
+    .steps-stage-3__title
+        font-size: 16px
+    .steps-stage-4__title
+        font-size: 16px
+    .steps-stage-1-table-row:first-child .steps-stage-1-table-row-cell__title--centered
+        max-width: 140px
+
+    .offer
+        &__title
+            font-size: 20px
+        &-stock
+            &__title
+                font-size: 16px
+                br
+                    display: none
+    .offer-timer__counter
+        font-size: 65px
+    .offer-timer-counter-names
+        padding-left: 30px
+    .clients
+        &__title
+            font-size: 20px
+        &-list
+            gap: 20px
+            &-card
+                margin: 0
+                &__img
+                    width: 110px
+                &::after
+                    width: 110px
+                    height: 110px
+                &__name
+                    font-size: 16px
+    .benefits
+        padding-bottom: 10px
+    .benefits-group-list-card
+        padding: 15px
+    .benefits-group-list-card__number
+        left: -40px
+        background: linear-gradient(90deg, #fff 50%, #fff 50%, transparent 50%, transparent)
+        font-size: 50px
+    .benefits-group-list-card-inner
+        padding-right: 16px
+    .benefits-group-list-card-inner__desc
+        font-size: 14px
+    .benefits-group-list-card-inner__title
+        font-size: 16px
+        line-height: 1.3
+    
+    .warranties
+        padding-bottom: 60px
+    .warranties-card
+        background-size: contain
+        background-position: center
+        padding: 37px 18px;
+    .warranties-card__title
+        line-height: 1.3
+        font-size: 18px
+    .warranties-card__desc
+        font-size: 15px
+    .contacts
+        padding-bottom: 15px
+    .contacts-card
+        text-align: center
+        margin-bottom: 40px
+    .contacts-card__desc
+        font-size: 14px
+    .contacts-card__img
+        margin-left: auto
+        margin-right: auto
+    .offer-timer__counter
+        font-size: 55px
+    .form-privacy__desc
+        font-size: 11px
+        &-link
+            font-size: 11px
+    .form__input-attach-text
+        font-size: 14px
+        &--opacity
+            font-size: 12px
+    .cases-showcase-tabbar
+        overflow-x: auto
+        width: auto
+        flex-wrap: nowrap
+    .cases-showcase-tabbar__button
+        display: inline-block
+        min-width: 200px
+    .reviews
+        padding-top: 40px
+        padding-bottom: 40px
+    .faq
+        padding-top: 30px
+    .reviews
+        .owl-nav button.owl-next,
+        .owl-nav button.owl-prev
+            display: none
+
+@media (max-width: 576px) and (min-width: 440px)
+    .steps-stage-1-table-row:first-child .steps-stage-1-table-row-cell
+        padding-top: 10px
+    .steps-stage-1-table-row:first-child .steps-stage-1-table-row-cell__title--centered
+        transform: none
+        position: static
+        text-align: center
+
+
+.fixed
+    position: fixed
+    top: 0
+    left: 0
+
+
+// POPS
+.popups
+    display: none
+.form--header-menu-callback
+    max-width: 400px
+    width: 100%
+    color: #333
+    background-color: #fff
+    padding-top: 45px
+    .form__title
+        line-height: 1.1
+        margin-bottom: 25px
+        font-weight: bold
+    &::after
+        border: 1px solid rgba(0, 0, 0, 0.15)
+    .form__input
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15)
+        color: #333
+        &:focus
+            border-bottom: 1px solid rgba(0, 0, 0, 0.95)
+    .pop-closer--inner
+        top: 0;
+        right: 0;
+        background: transparent;
+        color: #333;
+        &:hover
+            color: var(--c-accent)
+
+.pop-thanks
+    width: 300px
+    padding: 40px 20px
+    background-color: #fff
+    border-radius: 12px
